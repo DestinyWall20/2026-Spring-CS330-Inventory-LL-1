@@ -80,7 +80,7 @@ public class Inventory
     public boolean isFull()
     {
         // Replace the next line
-        return false;
+        return this.slots.currentSize == this.capacity;
     }
 
     /**
@@ -98,12 +98,33 @@ public class Inventory
      *
      * @param toAdd data that we want to store in a Node and add to the list
      */
+    @SuppressWarnings("unchecked")
     public void addItemStackNoCheck(ItemStack toAdd)
     {
         LinkedList.Node<ItemStack> newNode = new LinkedList.Node<>(toAdd);
 
         // Use the appendNode/add logic from Review 1 as your starting point
         // Once we reach this function... we know that `toAdd` must be stored
+
+        if (this.slots.head == null) {
+
+            this.slots.head = newNode;
+      
+        } 
+        else { 
+        LinkedList.Node<ItemStack> current = this.slots.head;
+
+        while (current.next != null) {
+            current = current.next;
+        }
+
+        // new node at the end
+        current.next = newNode;
+    }
+        
+        this.slots.currentSize++;
+        
+        
     }
 
     /**
