@@ -106,25 +106,21 @@ public class Inventory
         // Use the appendNode/add logic from Review 1 as your starting point
         // Once we reach this function... we know that `toAdd` must be stored
 
-        if (this.slots.head == null) {
+       if (this.slots.head == null) {
+        // List is empty
             this.slots.head = newNode;
-      
-        } 
-        else { 
-        LinkedList.Node<ItemStack> current = this.slots.head;
+            this.slots.tail = newNode;
+        //Increment size
+            this.slots.currentSize = 1;
+}
+        else {
+            // List is non-empty
+            this.slots.tail.next = newNode;
+            this.slots.tail = newNode;
+            this.slots.currentSize++;
+}
 
-        while (current.next != null) {
-            current = current.next;
-        }
-
-        // new node at the end
-        current.next = newNode;
-    }
-        
-        this.slots.currentSize++;
-        
-        
-    }
+}
 
     /**
      * Add one or more items to the inventory list.
