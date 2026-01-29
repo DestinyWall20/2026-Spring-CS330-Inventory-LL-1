@@ -107,7 +107,6 @@ public class Inventory
         // Once we reach this function... we know that `toAdd` must be stored
 
         if (this.slots.head == null) {
-
             this.slots.head = newNode;
       
         } 
